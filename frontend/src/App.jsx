@@ -5,6 +5,7 @@ import InputBox from "./components/InputBox.jsx";
 import PersonaSwitcher from "./components/PersonaSwitcher.jsx";
 import { personas } from "./data/personas.js";
 
+// Prefer `BACKEND_URL` if provided (your hosting may inject it), fall back to `VITE_API_URL` for local Vite setups
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const buildHistory = (messages) =>
