@@ -1,0 +1,265 @@
+:root {
+  color-scheme: light;
+  font-family: "Space Grotesk", sans-serif;
+  --bg: #f6f3ef;
+  --panel: #ffffff;
+  --ink: #191714;
+  --muted: #5f5b52;
+  --accent: #d86a4a;
+  --accent-soft: #f3d7ce;
+  --line: #e7dfd3;
+  --assistant: #f0efe9;
+  --user: #1f3d3a;
+  --user-text: #f8f7f2;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #fef8f2 0%, #f1ede6 50%, #e8e0d4 100%);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+.app-shell {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 32px 20px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+}
+
+.sidebar {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 24px;
+  height: fit-content;
+}
+
+.brand {
+  font-family: "Instrument Serif", serif;
+  font-size: 28px;
+  margin: 0;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.persona-list {
+  display: grid;
+  gap: 12px;
+}
+
+.persona-button {
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 12px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.persona-button:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.persona-button.active {
+  border-color: var(--accent);
+  box-shadow: 0 10px 25px rgba(216, 106, 74, 0.2);
+}
+
+.persona-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.persona-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.chat-panel {
+  background: var(--panel);
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.active-pill {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.chat-body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  max-width: 70%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  line-height: 1.5;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.message.assistant {
+  background: var(--assistant);
+  align-self: flex-start;
+}
+
+.message.user {
+  background: var(--user);
+  color: var(--user-text);
+  align-self: flex-end;
+}
+
+.typing {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--muted);
+  animation: pulse 1s infinite;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 24px 12px;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: border 0.2s ease, color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chat-input {
+  padding: 18px 24px 24px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+}
+
+.input-row textarea {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 14px;
+  font-family: inherit;
+  resize: none;
+  min-height: 52px;
+}
+
+.input-row button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.input-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .message {
+    max-width: 85%;
+  }
+}
